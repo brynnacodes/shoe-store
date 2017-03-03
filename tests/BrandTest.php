@@ -1,15 +1,30 @@
 <?php
-    require_once 'src/src.php';
 
-    class SourceTest extends PHPUnit_Framework_TestCase
+    /**
+    * @backupGlobals disabled
+    * @backupStaticAttributes disabled
+    */
+
+    require_once 'src/Brand.php';
+
+    $server = 'mysql:host=localhost:8889;dbname=shoes_test';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
+
+    class BrandTest extends PHPUnit_Framework_TestCase
     {
-        function test_source_function() {
-            $input = ' ';
-            $test_source = new Source;
+        function test_getName()
+        {
+            //Arrange
+            $name = 'Nike';
+            $test_brand = new Brand($name);
 
-            $result = $test_source->test_function();
+            //Act
+            $result = $test_brand->getName();
 
-            $this->assertEquals(1, $result);
+            //Assert
+            $this->assertEquals($name, $result);
         }
     }
 
