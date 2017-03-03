@@ -112,6 +112,25 @@
             //Assert
             $this->assertEquals($new_name, $result[0]->getName());
         }
+
+        function test_delete()
+        {
+            //Arrange
+            $name = 'Shoes Shoes Shoes';
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $name2 = 'Shoes R Us';
+            $test_store2 = new Store($name);
+            $test_store2->save();
+
+            //Act
+            $test_store->delete();
+            $result = Store::getAll();
+
+            //Assert
+            $this->assertEquals([$test_store2], $result);
+        }
     }
 
 
