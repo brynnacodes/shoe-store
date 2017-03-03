@@ -23,6 +23,31 @@
     {
         return $this->id;
     }
+
+    function save()
+    {
+        $exec = $GLOBALS['DB']->prepare("INSERT INTO stores (name) VALUES (:name);");
+        $exec->execute([':name' => $this->getName()]);
+        $this->id = $GLOBALS['DB']->lastInsertId();
+    }
+
+    static function getAll()
+    {
+        $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
+        $stores = [];
+        foreach ($returned_stores as $store) {
+            $name = $store['name'];
+            $id = $store['id'];
+            $new_store = new Store($name, $id);
+            array_push($stores, $new_store);
+        }
+        return $stores;
+    }
+
+    static function deleteAll()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM stores");
+    }
 }
 
 ?>

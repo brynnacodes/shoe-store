@@ -14,6 +14,11 @@
 
     class SourceTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+          Store::deleteAll();
+        }
+
         function test_getName()
         {
             //Arrange
@@ -39,6 +44,38 @@
 
             //Assert
             $this->assertEquals(3, $result);
+        }
+
+        function test_save()
+        {
+            //Arrange
+            $name = 'Shoes Shoes Shoes';
+            $test_store = new Store($name);
+
+            //Act
+            $test_store->save();
+            $result = Store::getAll();
+
+            //Assert
+            $this->assertEquals($test_store, $result[0]);
+        }
+
+        function test_getAll()
+        {
+            //Arrange
+            $name = 'Shoes Shoes Shoes';
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $name2 = 'Shoes R Us';
+            $test_store2 = new Store($name);
+            $test_store2->save();
+
+            //Act
+            $result = Store::getAll();
+
+            //Assert
+            $this->assertEquals([$test_store, $test_store2], $result);
         }
     }
 
