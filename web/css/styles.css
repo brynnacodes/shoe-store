@@ -1,3 +1,24 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navbar {
+    padding-top: 2%;
+    text-align: center;
+}
+.nav-ul {
+  display: inline-block;
+  margin-left: -30px;
+}
+
+.nav-li {
+  display: inline-block;
+  padding-right: 40px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5c5c5c;
+}
+
 .jumbotron {
     width: 100vw;
     margin-left: -15px;
@@ -12,18 +33,20 @@
     font-size: 75px;
     text-align: center;
     text-transform: uppercase;
-    font-family: sans-serif;
-    letter-spacing: 3px;
-    padding-top: 7%;
+    letter-spacing: 15px;
+    padding-top: 5%;
     color: white;
     font-weight: bold;
+    font-family: 'Cabin', sans-serif;
 }
 
 .jumbotron h4 {
     text-align: center;
     text-transform: uppercase;
-    font-family: sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
     color: white;
+    letter-spacing: 5px;
 }
 
 .about-div {
@@ -36,5 +59,25 @@
 }
 
 .listing-div {
-    padding-left: 20%;
+    text-align: center;
+}
+
+.listing-div h3 {
+    font-size: 26px;
+}
+
+.listing-div p {
+    font-size: 16px;
+}
+
+.add-form {
+    text-align: center;
+}
+
+.add-form input {
+    display: inline-block;
+}
+
+.add-form button {
+    display: inline-block;
 }
