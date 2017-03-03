@@ -43,7 +43,18 @@
                     <button class="btn" type="submit" name="button">Add store</button>
                 </form>
 
-                <a href="/"><button class="btn">Home</button></a>
+                <h3>Drop store availability</h3>
+                <form action="/drop_store/{{brand.getId}}" method="post">
+                    <label for="store">Choose a store:</label>
+                    <select id="store" name="store">
+                        {% if brand_stores is not empty%}
+                            {% for store in brand_stores %}
+                            <option value="{{store.getId()}}">{{store.getName}}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                    <button type="submit" name="button">Drop store</button>
+                </form>
 
         </div>
     </body>

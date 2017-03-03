@@ -80,5 +80,14 @@
         return $app->redirect("/stores/".$id);
     });
 
+    $app->post("/drop_store/{id}", function($id) use($app) {
+        $store_id = $_POST['store'];
+        $found_store = Store::find($store_id);
+        $brand = Brand::find($id);
+
+        $brand->dropStore();
+        return $app->redirect("/brands/".$id);
+    });
+
     return $app;
 ?>

@@ -31,31 +31,30 @@
                 {% endif %}
             </ul>
 
-                <h3>Add brand to this store</h3>
+            <h3>Add brand to this store</h3>
 
-                <form action="/stores/{{store.getId}}/edit" method="post">
-                    <label for="brand">Choose a brand:</label>
-                    <select id="brand" name="brand">
-                        {% for brand in brands %}
-                        <option value="{{brand.getId}}">{{ brand.getName }}</option>
+            <form action="/stores/{{store.getId}}/edit" method="post">
+                <label for="brand">Choose a brand:</label>
+                <select id="brand" name="brand">
+                    {% for brand in brands %}
+                    <option value="{{brand.getId}}">{{ brand.getName }}</option>
+                    {% endfor %}
+                </select>
+                <button class="btn" type="submit" name="button">Add brand to store</button>
+            </form>
+
+            <h3>Drop a brand from this store</h3>
+            <form action="/drop_brand/{{store.getId}}" method="post">
+                <label for="brand">Choose a brand:</label>
+                <select id="brand" name="brand">
+                    {% if store_brands is not empty%}
+                        {% for brand in store_brands %}
+                        <option value="{{brand.getId()}}">{{brand.getName}}</option>
                         {% endfor %}
-                    </select>
-                    <button class="btn" type="submit" name="button">Add brand to store</button>
-                </form>
-
-                <h3>Drop a brand from this store</h3>
-                <form action="/drop_brand/{{store.getId}}" method="post">
-                    <label for="brand">Choose a brand:</label>
-                    <select id="brand" name="brand">
-                        {% if store_brands is not empty%}
-                            {% for brand in store_brands %}
-                            <option value="{{brand.getId()}}">{{brand.getName}}</option>
-                            {% endfor %}
-                        {% endif %}
-                    </select>
-                    <button type="submit" name="button">Drop brand</button>
-                </form>
-
+                    {% endif %}
+                </select>
+                <button type="submit" name="button">Drop brand</button>
+            </form>
         </div>
     </body>
 </html>
