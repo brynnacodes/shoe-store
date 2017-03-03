@@ -3,7 +3,7 @@
         private $name;
         private $id;
 
-    function construct($name, $id)
+    function __construct($name, $id = null)
     {
         $this->name = $name;
         $this->id = $id;
@@ -11,7 +11,7 @@
 
     function setName($new_name)
     {
-        $$this->name = $new_name;
+        $this->name = $new_name;
     }
 
     function getName()
