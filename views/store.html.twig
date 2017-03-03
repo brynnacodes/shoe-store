@@ -4,12 +4,19 @@
         <meta charset="utf-8">
         <title>{{ store.getName }}</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/styles.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Cabin:700|Source+Sans+Pro" rel="stylesheet">
     </head>
     <body>
         <div class="container-fluid">
-            <div class="jumbotron">
+            <div class="navbar">
+                <ul class="nav-ul">
+                  <li class="nav-li"><a href="/">Home</a></li>
+                  <li class="nav-li"><a href="#">About</a></li>
+                  <li class="nav-li"><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="jumbotron shoe-jumbo">
                 <h1>{{ store.getName }}</h1>
             </div>
 
@@ -36,7 +43,18 @@
                     <button class="btn" type="submit" name="button">Add brand to store</button>
                 </form>
 
-                <a href="/"><button class="btn">Home</button></a>
+                <h3>Drop a brand from this store</h3>
+                <form action="/drop_brand/{{store.getId}}" method="post">
+                    <label for="brand">Choose a brand:</label>
+                    <select id="brand" name="brand">
+                        {% if store_brands is not empty%}
+                            {% for brand in store_brands %}
+                            <option value="{{brand.getId()}}">{{brand.getName}}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                    <button type="submit" name="button">Drop brand</button>
+                </form>
 
         </div>
     </body>

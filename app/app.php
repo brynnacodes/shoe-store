@@ -68,8 +68,15 @@
         $found_brand = Brand::find($brand_id);
         $add_brand = $store->addBrand($found_brand);
         $store_brands = $store->getBrands();
+        return $app->redirect("/stores/".$id);
+    });
 
+    $app->post("/drop_brand/{id}", function($id) use($app) {
+        $brand_id = $_POST['brand'];
+        $found_brand = Brand::find($brand_id);
+        $store = Store::find($id);
 
+        $store->dropBrand();
         return $app->redirect("/stores/".$id);
     });
 
