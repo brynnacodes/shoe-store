@@ -1,7 +1,40 @@
+.jumbotron {
+    width: 100vw;
+    margin-left: -15px;
+    height: 400px;
+    background-image: url("/../img/background.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
 .jumbotron h1 {
-    font-size: 35px;
+    font-size: 75px;
     text-align: center;
     text-transform: uppercase;
     font-family: sans-serif;
     letter-spacing: 3px;
+    padding-top: 7%;
+    color: white;
+    font-weight: bold;
+}
+
+.jumbotron h4 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    color: white;
+}
+
+.about-div {
+    text-align: center;
+    height: 200px;
+}
+
+.about-div h3 {
+    padding: 3%;
+}
+
+.listing-div {
+    padding-left: 20%;
 }
