@@ -26,7 +26,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 listing-div">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-4 listing-div">
                     <h3>Store Listings</h3>
 
                         {% if stores is not empty%}
@@ -35,7 +37,7 @@
                             {% endfor %}
                         {% endif %}
                 </div>
-                <div class="col-sm-6 listing-div">
+                <div class="col-sm-4 listing-div">
                     <h3>Brand Listings</h3>
 
                           {% if brands is not empty%}
@@ -43,6 +45,8 @@
                                   <a href="/brands/{{brand.getId}}"><p>{{ brand.getName }}</p></a>
                               {% endfor %}
                           {% endif %}
+                </div>
+                <div class="col-sm-2 right">
                 </div>
             </div>
         </div>

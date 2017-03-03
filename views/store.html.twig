@@ -19,42 +19,48 @@
             <div class="jumbotron shoe-jumbo">
                 <h1>{{ store.getName }}</h1>
             </div>
-
-            <h3>Current brands available:</h3>
-            <ul>
-                {% if store_brands is not empty %}
-                    {% for brand in store_brands %}
-                        <li>{{ brand.getName }}</li>
-                    {% endfor%}
-                {% else %}
-                    <p>No brands available at this time</p>
-                {% endif %}
-            </ul>
-
-            <h3>Add brand to this store</h3>
-
-            <form action="/stores/{{store.getId}}/edit" method="post">
-                <label for="brand">Choose a brand:</label>
-                <select id="brand" name="brand">
-                    {% for brand in brands %}
-                    <option value="{{brand.getId}}">{{ brand.getName }}</option>
-                    {% endfor %}
-                </select>
-                <button class="btn" type="submit" name="button">Add brand to store</button>
-            </form>
-
-            <h3>Drop a brand from this store</h3>
-            <form action="/drop_brand/{{store.getId}}" method="post">
-                <label for="brand">Choose a brand:</label>
-                <select id="brand" name="brand">
-                    {% if store_brands is not empty%}
+            <div class="row">
+                <div class="col-sm-12 current-div">
+                    <h3>Current brands available:</h3>
+                    {% if store_brands is not empty %}
                         {% for brand in store_brands %}
-                        <option value="{{brand.getId()}}">{{brand.getName}}</option>
-                        {% endfor %}
+                            <p>{{ brand.getName }}</p>
+                        {% endfor%}
+                    {% else %}
+                        <p>No brands available at this time</p>
                     {% endif %}
-                </select>
-                <button type="submit" name="button">Drop brand</button>
-            </form>
+                </div>
+            </div>
+            <hr>
+            
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="add-form">Add brand to this store</h3>
+                    <form class="add-form" action="/stores/{{store.getId}}/edit" method="post">
+                        <label for="brand">Choose a brand:</label>
+                        <select id="brand" name="brand">
+                            {% for brand in brands %}
+                            <option value="{{brand.getId}}">{{ brand.getName }}</option>
+                            {% endfor %}
+                        </select>
+                        <button class="btn" type="submit" name="button">Add brand to store</button>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <h3 class="add-form">Drop a brand from this store</h3>
+                    <form class="add-form" action="/drop_brand/{{store.getId}}" method="post">
+                        <label for="brand">Choose a brand:</label>
+                        <select id="brand" name="brand">
+                            {% if store_brands is not empty%}
+                                {% for brand in store_brands %}
+                                <option value="{{brand.getId()}}">{{brand.getName}}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                        <button class="btn" type="submit" name="button">Drop brand</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>

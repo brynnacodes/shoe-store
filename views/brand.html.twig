@@ -19,43 +19,48 @@
             <div class="jumbotron brand-jumbo">
                 <h1>{{ brand.getName }}</h1>
             </div>
+            <div class="row">
+                <div class="col-sm-12 current-div">
+                    <h3>Current store availability:</h3>
+                    {% if brand_stores is not empty %}
+                        {% for store in brand_stores %}
+                            <li>{{ store.getName }}</li>
+                        {% endfor%}
+                    {% else %}
+                        <p>No store availability at this time</p>
+                    {% endif %}
+                </div>
+            </div>
+            <hr>
 
-            <h3>Current store availability:</h3>
-            <ul>
-                {% if brand_stores is not empty %}
-                    {% for store in brand_stores %}
-                        <li>{{ store.getName }}</li>
-                    {% endfor%}
-                {% else %}
-                    <p>No store availability at this time</p>
-                {% endif %}
-            </ul>
-
-                <h3>Add store for this brand</h3>
-
-                <form action="/brands/{{brand.getId}}/edit" method="post">
-                    <label for="store">Choose a store:</label>
-                    <select id="store" name="store">
-                        {% for store in stores %}
-                        <option value="{{store.getId}}">{{ store.getName }}</option>
-                        {% endfor %}
-                    </select>
-                    <button class="btn" type="submit" name="button">Add store</button>
-                </form>
-
-                <h3>Drop store availability</h3>
-                <form action="/drop_store/{{brand.getId}}" method="post">
-                    <label for="store">Choose a store:</label>
-                    <select id="store" name="store">
-                        {% if brand_stores is not empty%}
-                            {% for store in brand_stores %}
-                            <option value="{{store.getId()}}">{{store.getName}}</option>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="add-form">Add store for this brand</h3>
+                    <form class="add-form" action="/brands/{{brand.getId}}/edit" method="post">
+                        <label for="store">Choose a store:</label>
+                        <select id="store" name="store">
+                            {% for store in stores %}
+                            <option value="{{store.getId}}">{{ store.getName }}</option>
                             {% endfor %}
-                        {% endif %}
-                    </select>
-                    <button type="submit" name="button">Drop store</button>
-                </form>
-
+                        </select>
+                        <button class="btn" type="submit" name="button">Add store</button>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <h3 class="add-form">Drop store availability</h3>
+                    <form class="add-form" action="/drop_store/{{brand.getId}}" method="post">
+                        <label for="store">Choose a store:</label>
+                        <select id="store" name="store">
+                            {% if brand_stores is not empty%}
+                                {% for store in brand_stores %}
+                                <option value="{{store.getId()}}">{{store.getName}}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                        <button class="btn" type="submit" name="button">Drop store</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>
