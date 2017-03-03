@@ -95,6 +95,23 @@
             //Assert
             $this->assertEquals($test_brand, $result);
         }
+
+        function test_update()
+        {
+            //Arrange
+            $name = 'Nike';
+            $test_brand = new Brand($name);
+            $test_brand->save();
+
+            $new_name = 'Doc Martin';
+
+            //Act
+            $test_brand->update($new_name);
+            $result = Brand::getAll();
+
+            //Assert
+            $this->assertEquals($new_name, $result[0]->getName());
+        }
     }
 
 

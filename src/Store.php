@@ -31,6 +31,19 @@
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
+    function update($new_name)
+    {
+        $exec = $GLOBALS['DB']->prepare("UPDATE stores SET name = :name WHERE id = :id;");
+        $exec->execute([':name' => $new_name, ':id' => $this->getId()]);
+        $this->setName($new_name);
+    }
+
+    function delete()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+        $GLOBALS['DB']->exec("DELETE FROM stores_stores WHERE store_id = {$this->getId()};");
+    }
+
     static function getAll()
     {
         $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");

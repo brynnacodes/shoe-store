@@ -95,6 +95,23 @@
             //Assert
             $this->assertEquals($test_store, $result);
         }
+
+        function test_update()
+        {
+            //Arrange
+            $name = 'Shoes R Us';
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $new_name = 'Shoe Emporium';
+
+            //Act
+            $test_store->update($new_name);
+            $result = Store::getAll();
+
+            //Assert
+            $this->assertEquals($new_name, $result[0]->getName());
+        }
     }
 
 
