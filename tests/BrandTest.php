@@ -151,7 +151,6 @@
             $test_brand->addStore($test_store);
             $test_brand->addStore($test_store2);
             $result = $test_brand->getStores();
-
             //Assert
             $this->assertEquals([$test_store, $test_store2], $result);
         }

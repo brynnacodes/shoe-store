@@ -1,0 +1,7 @@
+.jumbotron h1 {
+    font-size: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    letter-spacing: 3px;
+}

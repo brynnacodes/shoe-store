@@ -92,7 +92,7 @@
         $found_brand;
         $brands = Brand::getAll();
         foreach ($brands as $brand) {
-            if ($brand->getId() ==$id) {
+            if ($brand->getId() == $id) {
                 $found_brand = $brand;
             }
         }
