@@ -23,6 +23,12 @@
         return $app["twig"]->render("root.html.twig", ['stores' => $stores, 'brands' => $brands]);
     });
 
+    $app->get('/administrator', function() use($app) {
+        $brands = Brand::getAll();
+        $stores = Store::getAll();
+        return $app["twig"]->render("administrator.html.twig", ['stores' => $stores, 'brands' => $brands]);
+    });
+
     $app->post('/add_brand', function() use($app) {
         $new_brand = new Brand($_POST['name']);
         $new_brand->save();

@@ -1,37 +1,50 @@
-# _{Application Name}_
+# _Shoefinder_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _A site to search for shoes and brands, 03/03/17_
 
-#### By _**{List of contributors}**_
+#### By _**Brynna Klamkin-McCarter**_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_Shoefinder is a web application built with Php and MySQL that allows administrators to add and delete stores and brands, while allowing customers to browse both stores and brands._
+
+##Database Setup Commands
+_In either terminal or phpMyadmin enter the following commands:_
+* _CREATE DATABASE shoes_
+* _USE shoes_
+* _CREATE TABLE brands (name VARCHAR (255), id serial PRIMARY KEY)_
+* _CREATE TABLE stores (name VARCHAR (255), id serial PRIMARY KEY)_
+* _CREATE TABLE brands_stores (brand_id INT, store_id INT, id serial PRIMARY KEY)_
+* _Navigate to localhost:8888/phpmyadmin and click on shoes, then operations, then copy the database to a new database named shoes_test;_
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
-
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+* _Clone this repository to your device_
+* _Start MAMP or other combination of Apache server and MySQL, and make sure the port is set to localhost:8889_
+* _Install composer in the project folder_
+* _Navigate to the web folder and start a development server at localhost:8000_
+* _Navigate to localhost:8000 in your preferred web browser_
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+_No known issues_
 
 ## Support and contact details
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+_Please contact repository administrator for questions, support, or suggestions_
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+* _PHP_
+* _Twig_
+* _Silex_
+* _MySQL_
+* _Composer_
+* _phpUnit_
+* _Bootstrap/CSS_
 
 ### License
 
-*{Determine the license under which this application can be used.  See below for more details on licensing.}*
+*This software is licensed under the MIT license*
 
-Copyright (c) 2017 **_{List of contributors or company name}_**
+*Copyright (c) 2017 Brynna Klamkin-McCarter_*

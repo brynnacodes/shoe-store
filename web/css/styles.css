@@ -98,5 +98,9 @@ body {
 
 .brand-jumbo {
     background-image: url("/../img/brand-background.jpeg");
+}
 
+
+.brand-jumbo h1 {
+    padding-top: 7%;
 }
