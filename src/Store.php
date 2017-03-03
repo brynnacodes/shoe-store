@@ -46,8 +46,8 @@
 
     function addBrand($brand)
     {
-        $exec = $GLOBALS['DB']->prepare("INSERT INTO brands_brands (brand_id, brand_id) VALUES (:brand_id, :brand_id);");
-        $exec->execute([':brand_id' => $this->getId(), ':brand_id' => $brand->getId()]);
+        $exec = $GLOBALS['DB']->prepare("INSERT INTO brands_stores (brand_id, store_id) VALUES (:brand_id, :store_id);");
+        $exec->execute([':brand_id' => $brand->getId(), ':store_id' => $this->getId()]);
     }
 
     function getBrands()
