@@ -29,6 +29,23 @@
         return $app["twig"]->render("administrator.html.twig", ['stores' => $stores, 'brands' => $brands]);
     });
 
+    $app->post('/delete_all_stores', function() use($app) {
+        $brands = Brand::getAll();
+        Store::deleteAll();
+        $stores = Store::getAll();
+
+        return $app->redirect("/administrator");
+    });
+
+    $app->post('/delete_all_brands', function() use($app) {
+        $brands = Brand::getAll();
+        Brand::deleteAll();
+        $stores = Store::getAll();
+
+        return $app->redirect("/administrator");
+    });
+
+
     $app->post('/add_brand', function() use($app) {
         $new_brand = new Brand($_POST['name']);
         $new_brand->save();
@@ -59,6 +76,12 @@
         return $app->redirect("/brands/".$id);
     });
 
+    $app->post("/brands/{id}/delete", function($id) use($app) {
+        $brand = Brand::find($id);
+        $brand->delete();
+        return $app->redirect("/");
+    });
+
     $app->get("/stores/{id}", function($id) use($app) {
         $store = Store::find($id);
         $brands = Brand::getAll();
@@ -75,6 +98,12 @@
         $add_brand = $store->addBrand($found_brand);
         $store_brands = $store->getBrands();
         return $app->redirect("/stores/".$id);
+    });
+
+    $app->post("/stores/{id}/delete", function($id) use($app) {
+        $store = Store::find($id);
+        $store->delete();
+        return $app->redirect("/");
     });
 
     $app->post("/drop_brand/{id}", function($id) use($app) {

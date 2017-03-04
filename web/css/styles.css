@@ -71,6 +71,9 @@ body {
 .right {
     float: right;
 }
+.left {
+    float: left;
+}
 
 .listing-div {
     text-align: center;
@@ -96,7 +99,7 @@ body {
     display: inline-block;
 }
 
-/*brand and shoe styles*/
+/*admin brand and shoe styles*/
 
 .shoe-jumbo {
     background-image: url("/../img/shoe-background.jpeg");
@@ -109,5 +112,9 @@ body {
 
 .current-div {
     text-align: center;
-    font-size: 18px; 
+    font-size: 18px;
+}
+
+.add-button {
+    margin-top: 2%;
 }

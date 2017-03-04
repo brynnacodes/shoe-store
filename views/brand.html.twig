@@ -61,6 +61,14 @@
                     </form>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="add-form">Delete this brand</h3>
+                    <form class="add-form" action="/brands/{{brand.getId}}/delete" method="post">
+                      <button class="btn" type="submit" name="button">Delete</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>

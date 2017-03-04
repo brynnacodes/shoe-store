@@ -32,7 +32,7 @@
                 </div>
             </div>
             <hr>
-            
+
             <div class="row">
                 <div class="col-sm-6">
                     <h3 class="add-form">Add brand to this store</h3>
@@ -58,6 +58,14 @@
                             {% endif %}
                         </select>
                         <button class="btn" type="submit" name="button">Drop brand</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="add-form">Delete this brand</h3>
+                    <form class="add-form" action="/stores/{{store.getId}}/delete" method="post">
+                      <button class="btn" type="submit" name="button">Delete</button>
                     </form>
                 </div>
             </div>
