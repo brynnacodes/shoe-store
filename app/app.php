@@ -65,10 +65,9 @@
         return $app['twig']->render("brand.html.twig", ['brand' => $brand, 'stores' => $stores, 'brand_stores' => $brand_stores]);
     });
 
-    $app->post("/brands/{id}/edit", function($id) use($app) {
+    $app->post("/brands/{id}/add_store", function($id) use($app) {
         $brand = Brand::find($id);
         $stores = Store::getAll();
-
         $store_id = $_POST['store'];
         $found_store = Store::find($store_id);
         $add_store = $brand->addStore($found_store);
@@ -76,7 +75,14 @@
         return $app->redirect("/brands/".$id);
     });
 
-    $app->post("/brands/{id}/delete", function($id) use($app) {
+    $app->patch('/brands/{id}/edit', function($id) use($app) {
+        $name = $_POST['name'];
+        $brand = Brand::find($id);
+        $brand->update($name);
+        return $app->redirect("/brands/".$id);
+    });
+
+    $app->delete("/brands/{id}/delete", function($id) use($app) {
         $brand = Brand::find($id);
         $brand->delete();
         return $app->redirect("/");
@@ -89,10 +95,9 @@
         return $app['twig']->render("store.html.twig", ['store' => $store, 'brands' => $brands, 'store_brands' => $store_brands]);
     });
 
-    $app->post("/stores/{id}/edit", function($id) use($app) {
+    $app->post("/stores/{id}/add_brand", function($id) use($app) {
         $store = Store::find($id);
         $brands = Brand::getAll();
-
         $brand_id = $_POST['brand'];
         $found_brand = Brand::find($brand_id);
         $add_brand = $store->addBrand($found_brand);
@@ -100,7 +105,14 @@
         return $app->redirect("/stores/".$id);
     });
 
-    $app->post("/stores/{id}/delete", function($id) use($app) {
+    $app->patch('/stores/{id}/edit', function($id) use($app) {
+        $name = $_POST['name'];
+        $store = Store::find($id);
+        $store->update($name);
+        return $app->redirect("/stores/".$id);
+    });
+
+    $app->delete("/stores/{id}/delete", function($id) use($app) {
         $store = Store::find($id);
         $store->delete();
         return $app->redirect("/");
